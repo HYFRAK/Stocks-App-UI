@@ -1,7 +1,7 @@
-import 'dart:ffi';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:stocks_app/bottombar.dart';
 import 'package:stocks_app/collection_block.dart';
 import 'package:stocks_app/constants.dart';
 import 'package:stocks_app/favorite_block.dart';
@@ -110,6 +110,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Random ran1 = Random();
     return Scaffold(
+      bottomNavigationBar: BottomBar(),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,

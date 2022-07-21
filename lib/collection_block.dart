@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:stocks_app/constants.dart';
 import 'package:stocks_app/namelist.dart';
 
+Map<int, int> used = {};
+
 class CollectionBlock extends StatelessWidget {
   final String title;
   final String des;
@@ -12,7 +14,6 @@ class CollectionBlock extends StatelessWidget {
   CollectionBlock(
       {Key? key, required this.title, required this.des, required this.growth})
       : super(key: key);
-  Map<int, int> used = {};
 
   List<Widget> overlap(List<String> x) {
     int overlaps = 30;
@@ -29,12 +30,15 @@ class CollectionBlock extends StatelessWidget {
 
   List<String> generate() {
     Random ran = Random();
-
     List<String> li = [];
+    Map<int, int> used1 = {};
     for (var i = 0; i < 4; i++) {
       int ranint = ran.nextInt(f.length);
-
+      while (used1[ranint] == 1) {
+        ranint = ran.nextInt(f.length);
+      }
       li.add("https://eodhistoricaldata.com/img/logos/US/${f[ranint]}.png");
+      used1[ranint] = 1;
     }
     return li;
   }
